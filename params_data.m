@@ -13,16 +13,14 @@ N = 10;         % Relación de transmisión
 
 % --- 2. Parametros del Sensor (Potenciometros) ---
 % Rango +/- 10V para una vuelta completa (2pi rad)
-K_pot = 20 / (2*pi); % aprox 3.183 [V/rad]
-
+K_pot_in = 20 / (10*2*pi); % aprox 0.3183 [V/rad]
+K_pot_out = K_pot_in*10;
 % --- 3. Calculos Auxiliares ---
 % Fricción efectiva vista por el motor (mecánica + efecto eléctrico)
 B_eff = Beq + (Kt * Kb) / Ra;
 
 % --- 4. Variables de Diseño (Controlador) ---
-K_pre = 1;      % Ganancia del preamplificador (Ajustable)
-K_pwr = 1;      % Ganancia de potencia (Fija, buffer)
-K_total = K_pre * K_pwr;
+K_pwr = 4.8
 
 
 disp('Parametros cargados correctamente.');
