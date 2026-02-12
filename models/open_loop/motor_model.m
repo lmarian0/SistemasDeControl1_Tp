@@ -21,8 +21,5 @@ s = tf('s')
 G_motor = zpk((1/10) * Kt/(s^2*Jeq*Ra + s*(Beq*Ra+Kb*Kt)))
 %%Polos
 pole(G_motor)
-%%Grafico
-step(G_motor, 4)
-yticks(0:0.06:0.5);
-xticks(0:0.4:4);
+
 
