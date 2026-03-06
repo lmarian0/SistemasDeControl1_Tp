@@ -27,9 +27,21 @@ B_eff = Beq + (Kt * Kb) / Ra;
 
 
 % --- 4. Variables de Diseè´–o (Controlador) ---
-Kp = 1.2 %8.91
-%Ti = 1; %1
-Td = 0.584 %0.584 %0.3;
+Kp = 1.2;%1.2
+%Ti = 1;
+Td = 0.584;
+
+% --- 5. Perturbaciones
+% Tw = 1/2 densidad*v_viento**2*Area*D*Cm = Kw * v_viento**2
+% Kw con un angulo desfavorable puede ser 0.166
+densidad = 1.225; %kg/m3
+diametro = 1.2 %m
+area = pi*(diametro/2)**2; %m2
+Cm = 0.2; %Angulo oblicuo
+Kw = (1/2)*densidad*area*diametro*Cm;
+viento_km_h = 9;
+Tw = Kw*(viento_km_h/3.6)**2;
+
 
 disp('Parametros cargados correctamente.');
 

@@ -6,15 +6,17 @@ controller_design
 control_G =  G_Controller * K_pwr * G_motor
 control_H = K_pot_out
 
+%Estudio del sistema a lazo abierto para buscar kp
 %rlocusx(control_G*control_H)
-%sgrid(-0.6,2.5)
+%sgrid
+G_CL = minreal(feedback(control_G, control_H))
 
-error = (Vi)*control_G/(1+control_G*control_H)
+error = (Vi*pi)/10 - (Vi)*control_G/(1+control_G*control_H)
 
 step(error)
 grid on;
 
-% Truco: Poner la grilla en NEGRO y subirle la opacidad
+%Poner la grilla en NEGRO y subirle la opacidad
 set(gca, 'GridColor', 'k');  % 'k' es negro
 set(gca, 'GridAlpha', 0.4);  % 1 es solido, 0 es invisible. 0.4 es un buen gris.
 title('Error de Posicion');
